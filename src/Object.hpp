@@ -3,6 +3,7 @@
 #include <glm/vec2.hpp>
 #include <iostream>
 #include <string>
+#include "Logger.hpp"
 class Object{
 	glm::vec2 position;
 	glm::vec2 size;
@@ -10,7 +11,8 @@ class Object{
 	Object(const glm::vec2& pos, const glm::vec2& size);
 	void Draw(SDL_Renderer* renderer) const;
 	void Move(const glm::vec2& vec);
-	void Print(const std::string& prefix = "", const std::string& suffix="") const;
+	void Print(const std::string& prefix = "") const;
+	friend class Logger;
 };
 
 std::ostream& operator<<(std::ostream& out, const glm::vec2& vec);

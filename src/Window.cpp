@@ -30,19 +30,16 @@ void Window::PushObject(const std::shared_ptr<Object>& o){
 }
 
 void Window::Update(int delay){
-	if(IsGameUp){
 		std::this_thread::sleep_for(std::chrono::milliseconds(delay));
 		ClearWindow();
 		DrawObjects();
 		SDL_RenderPresent(renderer);
-	}
 }
 
 void Window::MainLoop(){
 	SDL_Event e;
 	while(IsGameUp){
 		objects[0]->Move( glm::vec2(0.1, 0.1) );
-		//objects[0]->print();
 		while(SDL_PollEvent(&e)){
 			if(e.type == SDL_QUIT){
 				IsGameUp=false;

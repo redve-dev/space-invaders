@@ -6,5 +6,4 @@ int main(){
 	auto g = Window(800, 600);
 	g.PushObject(o);
 	g.MainLoop();
-
 }

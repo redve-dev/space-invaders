@@ -1,7 +1,8 @@
 #include "Entity.hpp"
 
-Entity::Entity(const glm::vec2& position):
-	Hitbox(glm::vec2(position.x * 50, position.y * 50), glm::vec2(50,50)),
+Entity::Entity(const glm::vec2& position, float hitbox_side):
+	hitbox_side_length(hitbox_side),
+	hitbox(position, glm::vec2(hitbox_side, hitbox_side)),
 	IsAlive(true),
 	position(position)
 {}
@@ -23,9 +24,14 @@ void Entity::Move(Entity::MOVE_DIRECTION dir){
 	}
 }
 
-void Entity::Update(){
-	//static int move_direction = 1;
-	if(IsAlive){
+void Entity::SetPosition(const glm::vec2& pos){
+	position = pos;
+}
 
+void Entity::Update(SDL_Renderer* renderer){
+	if(IsAlive){
+		hitbox.SetPosition(position);
+		hitbox.SetSize(glm::vec2(hitbox_side_length, hitbox_side_length));
+		hitbox.Draw(renderer);
 	}
 }

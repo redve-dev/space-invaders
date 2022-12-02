@@ -8,7 +8,8 @@ src = [
 'src/Logger.cpp',
 'src/Enemy.cpp',
 'src/Player.cpp',
-'src/Entity.cpp'
+'src/Entity.cpp',
+'src/EventHandler.cpp'
 ]
 
 deps = [dependency('sdl2'), dependency('glm')]

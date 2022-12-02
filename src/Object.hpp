@@ -13,6 +13,7 @@ class Object{
 	void Draw(SDL_Renderer* renderer) const;
 	void Move(const glm::vec2& vec);
 	void SetPosition(const glm::vec2& pos);
+	void SetSize(const glm::vec2& size);
 	void Print(const std::string& prefix = "") const;
 	friend class Logger;
 	bool IsPointInside(const glm::vec2& point);

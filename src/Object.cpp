@@ -1,4 +1,5 @@
 #include "Object.hpp"
+#include <cstdio>
 #include <functional>
 #include <sstream>
 
@@ -15,7 +16,7 @@ void Object::Draw(SDL_Renderer* renderer) const{
 			.w=static_cast<int>(size.x),
 			.h=static_cast<int>(size.y) 
 	};
-	SDL_RenderDrawRect(renderer, &dummy);
+	SDL_RenderFillRect(renderer, &dummy);
 }
 
 void Object::Move(const glm::vec2& vec){
@@ -48,4 +49,8 @@ bool Object::IsPointInside(const glm::vec2& point){
 	return point.x >= position.x && point.x <= position.x+size.x &&
 		point.y >= position.y && point.y <= position.y+size.y;
 
+}
+
+void Object::SetSize(const glm::vec2& size){
+	this->size = size;
 }

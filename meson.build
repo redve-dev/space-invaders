@@ -5,7 +5,8 @@ src = [
 'src/main.cpp',
 'src/Window.cpp',
 'src/Object.cpp',
-'src/Logger.cpp'
+'src/Logger.cpp',
+'src/Enemy.cpp'
 ]
 
 deps = [dependency('sdl2'), dependency('glm')]

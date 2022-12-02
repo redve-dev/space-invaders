@@ -22,9 +22,8 @@ void Object::Move(const glm::vec2& vec){
 	position += vec;
 }
 
-std::ostream& operator<<(std::ostream& out, const glm::vec2& vec){
-	out<<"x: "<<vec.x<<", y: "<<vec.y;
-	return out;
+void Object::SetPosition(const glm::vec2& pos){
+	position = pos;
 }
 
 static std::string CreateFormattedMessage(const char* prefix, const glm::vec2& vec){
@@ -38,4 +37,15 @@ void Object::Print(const std::string& prefix) const {
 	const std::string size_info = CreateFormattedMessage("Size:\n\t", size);
 	const std::string result_info = prefix+'\n'+pos_info + size_info+'\n';
 	Logger::LogMessage(Logger::LogLevel::DEBUG, result_info.c_str());
+}
+
+std::ostream& operator<<(std::ostream& out, const glm::vec2& vec){
+	out<<"x: "<<vec.x<<", y: "<<vec.y;
+	return out;
+}
+
+bool Object::IsPointInside(const glm::vec2& point){
+	return point.x >= position.x && point.x <= position.x+size.x &&
+		point.y >= position.y && point.y <= position.y+size.y;
+
 }

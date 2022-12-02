@@ -39,12 +39,13 @@ void Window::Update(int delay){
 void Window::MainLoop(){
 	SDL_Event e;
 	while(IsGameUp){
-		objects[0]->Move( glm::vec2(0.1, 0.1) );
-		objects[0]->Print("Object[0] ");
+		//objects[0]->Move( glm::vec2(0.1, 0.1) );
+		//objects[0]->Print("Object[0] ");
 		while(SDL_PollEvent(&e)){
 			if(e.type == SDL_QUIT){
 				IsGameUp=false;
 			}
+			event_handler.UpdateKeys(e);
 		}
 		Update(10);
 	}

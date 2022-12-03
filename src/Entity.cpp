@@ -21,6 +21,9 @@ void Entity::Move(Entity::MOVE_DIRECTION dir){
 		case Entity::MOVE_DIRECTION::UP:
 			position += glm::vec2(0, -1);
 			break;
+		case Entity::MOVE_DIRECTION::NONE:
+			// ignore
+			break;
 	}
 }
 

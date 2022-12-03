@@ -6,7 +6,8 @@ class Entity{
 			LEFT,
 			RIGHT,
 			DOWN,
-			UP
+			UP,
+			NONE
 		};
 	
 	protected:

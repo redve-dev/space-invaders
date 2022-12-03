@@ -14,7 +14,7 @@ class EventHandler{
 	};
 	EventHandler();
 	void UpdateKeys(const SDL_Event& e);
-	bool IsButtonPressed(BUTTON b);
-	bool IsGameClosed(const SDL_Event& e);
+	bool IsButtonPressed(BUTTON b) const;
+	bool IsGameClosed(const SDL_Event& e) const;
 	friend class Logger;
 };

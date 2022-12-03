@@ -31,10 +31,10 @@ void EventHandler::UpdateKeys(const SDL_Event &e){
 	}
 }
 
-bool EventHandler::IsButtonPressed(BUTTON b){
+bool EventHandler::IsButtonPressed(BUTTON b) const{
 	return buttons_state.at(static_cast<size_t>(b));
 }
 
-bool EventHandler::IsGameClosed(const SDL_Event &e){
+bool EventHandler::IsGameClosed(const SDL_Event &e) const{
 	return e.type == SDL_QUIT;
 }

@@ -12,14 +12,14 @@ class Window{
 		SDL_Renderer* renderer;
 		EventHandler event_handler;
 
-		std::vector<std::shared_ptr<Object>> objects;
+		std::vector<std::shared_ptr<Entity>> objects;
 		bool IsGameUp;
 		void ClearWindow();
 		void DrawObjects();
 	public:
 		Window(int width, int height);
 		~Window();
-		void PushObject(const std::shared_ptr<Object>& o);
+		void PushObject(const std::shared_ptr<Entity>& o);
 		void Update(int delay);
 		void MainLoop();
 };

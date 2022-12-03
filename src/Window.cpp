@@ -20,12 +20,12 @@ void Window::ClearWindow(){
 void Window::DrawObjects(){
 	ClearWindow();
 	for(auto& object : objects){
-		object->Draw(renderer);
+		object->Update(renderer);
 	}
 	SDL_RenderPresent(renderer);
 }
 
-void Window::PushObject(const std::shared_ptr<Object>& o){
+void Window::PushObject(const std::shared_ptr<Entity>& o){
 	objects.push_back(o);
 }
 
@@ -52,6 +52,8 @@ void Window::MainLoop(){
 		while(SDL_PollEvent(&e)){
 			IsGameUp = !event_handler.IsGameClosed(e);
 			event_handler.UpdateKeys(e);
+			auto dir = ChooseEntityDirection(event_handler);
+			objects.at(0)->Move(dir);
 		}
 		Update(10);
 	}

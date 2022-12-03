@@ -36,11 +36,19 @@ void Window::Update(int delay){
 		SDL_RenderPresent(renderer);
 }
 
+static Entity::MOVE_DIRECTION ChooseEntityDirection(const EventHandler& event_handler){
+	if ( event_handler.IsButtonPressed(EventHandler::BUTTON::A)){
+		return Entity::MOVE_DIRECTION::LEFT;
+	}
+	if ( event_handler.IsButtonPressed(EventHandler::BUTTON::D)){
+		return Entity::MOVE_DIRECTION::RIGHT;
+	}
+	return Entity::MOVE_DIRECTION::NONE;
+}
+
 void Window::MainLoop(){
 	static SDL_Event e;
 	while(IsGameUp){
-		//objects[0]->Move( glm::vec2(0.1, 0.1) );
-		//objects[0]->Print("Object[0] ");
 		while(SDL_PollEvent(&e)){
 			IsGameUp = !event_handler.IsGameClosed(e);
 			event_handler.UpdateKeys(e);

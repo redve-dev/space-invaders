@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.hpp"
+#include "Entity.hpp"
 #include "EventHandler.hpp"
 #include <SDL2/SDL.h>
 #include <vector>

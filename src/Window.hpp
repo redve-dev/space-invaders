@@ -5,7 +5,7 @@
 #include <SDL2/SDL.h>
 #include <vector>
 #include <memory>
-
+#include "Player.hpp"
 class Window{
 	private:
 		SDL_Window* window;
@@ -13,6 +13,7 @@ class Window{
 		EventHandler event_handler;
 
 		std::vector<std::shared_ptr<Entity>> enemies;
+		std::shared_ptr<Player> player;
 		bool IsGameUp;
 		void ClearWindow();
 		void DrawObjects();

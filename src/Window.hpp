@@ -17,10 +17,12 @@ class Window{
 		bool IsGameUp;
 		void ClearWindow();
 		void DrawObjects();
+		void ProcessEvents();
 	public:
 		Window(int width, int height);
 		~Window();
 		void PushObject(const std::shared_ptr<Entity>& o);
+		Player& CreatePlayer(const glm::vec2& pos);
 		void Update(int delay);
 		void MainLoop();
 };

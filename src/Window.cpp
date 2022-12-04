@@ -53,7 +53,8 @@ void Window::MainLoop(){
 			IsGameUp = !event_handler.IsGameClosed(e);
 			event_handler.UpdateKeys(e);
 			auto dir = ChooseEntityDirection(event_handler);
-			enemies.at(0)->Move(dir);
+			if ( player != nullptr )
+				player->Move(dir);
 		}
 		Update(10);
 	}
@@ -64,4 +65,13 @@ Window::~Window(){
 	SDL_DestroyWindow(window);
 	renderer = nullptr;
 	window = nullptr;
+}
+
+Player& Window::CreatePlayer(const glm::vec2& pos){
+	player = std::make_shared<Player>(pos);
+	return *player;
+}
+
+void Window::ProcessEvents(){
+
 }

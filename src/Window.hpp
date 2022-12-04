@@ -12,7 +12,7 @@ class Window{
 		SDL_Renderer* renderer;
 		EventHandler event_handler;
 
-		std::vector<std::shared_ptr<Entity>> objects;
+		std::vector<std::shared_ptr<Entity>> enemies;
 		bool IsGameUp;
 		void ClearWindow();
 		void DrawObjects();

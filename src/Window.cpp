@@ -19,14 +19,14 @@ void Window::ClearWindow(){
 
 void Window::DrawObjects(){
 	ClearWindow();
-	for(auto& object : objects){
+	for(auto& object : enemies){
 		object->Update(renderer);
 	}
 	SDL_RenderPresent(renderer);
 }
 
 void Window::PushObject(const std::shared_ptr<Entity>& o){
-	objects.push_back(o);
+	enemies.push_back(o);
 }
 
 void Window::Update(int delay){
@@ -53,7 +53,7 @@ void Window::MainLoop(){
 			IsGameUp = !event_handler.IsGameClosed(e);
 			event_handler.UpdateKeys(e);
 			auto dir = ChooseEntityDirection(event_handler);
-			objects.at(0)->Move(dir);
+			enemies.at(0)->Move(dir);
 		}
 		Update(10);
 	}

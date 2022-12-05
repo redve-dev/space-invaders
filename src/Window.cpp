@@ -22,6 +22,7 @@ void Window::DrawObjects(){
 	for(auto& object : enemies){
 		object->Update(renderer);
 	}
+	player->Update(renderer);
 	SDL_RenderPresent(renderer);
 }
 
@@ -52,9 +53,7 @@ void Window::MainLoop(){
 		while(SDL_PollEvent(&e)){
 			IsGameUp = !event_handler.IsGameClosed(e);
 			event_handler.UpdateKeys(e);
-			auto dir = ChooseEntityDirection(event_handler);
-			if ( player != nullptr )
-				player->Move(dir);
+			ProcessEvents();
 		}
 		Update(10);
 	}
@@ -73,5 +72,7 @@ Player& Window::CreatePlayer(const glm::vec2& pos){
 }
 
 void Window::ProcessEvents(){
-
+	auto dir = ChooseEntityDirection(event_handler);
+	if ( player != nullptr )
+		player->Move(dir);
 }
